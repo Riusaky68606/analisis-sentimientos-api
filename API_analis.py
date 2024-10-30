@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  
 import joblib
 import numpy as np
 import re
@@ -15,7 +16,7 @@ vectorizer = joblib.load('vectorizer.pkl')  # Cargar el vectorizador
 
 # Crear la aplicación Flask
 app = Flask(__name__)
-
+CORS(app) 
 @app.route('/clasificar', methods=['POST'])
 def clasificar_sentimiento():
     try:
