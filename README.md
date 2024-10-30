@@ -1,6 +1,3 @@
-### Contenido Completo del README.md en formato Markdown
-
-```markdown
 # Análisis de Sentimientos API
 
 API de Análisis de Sentimientos en Español usando Machine Learning, diseñada para clasificar comentarios de usuarios en positivo, negativo y neutral.
