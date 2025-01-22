@@ -1,10 +1,16 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS  
+import re
+import os
+import nltk
 import joblib
 import numpy as np
-import re
-import nltk
+
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS  
 from nltk.corpus import stopwords
+
+# Crear la aplicación Flask
+app = Flask(__name__)
+CORS(app) 
 
 # Descargar las stopwords en español
 nltk.download('stopwords')
@@ -14,9 +20,12 @@ stop_words = set(stopwords.words('spanish'))
 model = joblib.load('svm_model_optimized.pkl')  # Cargar tu modelo optimizado SVM
 vectorizer = joblib.load('vectorizer.pkl')  # Cargar el vectorizador
 
-# Crear la aplicación Flask
-app = Flask(__name__)
-CORS(app) 
+
+@app.route("/")
+def home():
+    # Renderizamos el index.html que estará en /templates/index.html
+    return render_template("index.html")
+
 @app.route('/clasificar', methods=['POST'])
 def clasificar_sentimiento():
     try:
@@ -52,4 +61,4 @@ def preprocess_text(text):
     return ' '.join(tokens)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)

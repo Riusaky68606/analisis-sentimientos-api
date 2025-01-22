@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Análisis de Sentimientos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Análisis de Sentimientos</h1>
+    <textarea id="comentario" placeholder="Escribe un comentario..."></textarea>
+    <button id="analizar-btn">Analizar Sentimiento</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    document.getElementById('analizar-btn').addEventListener('click', async () => {
+      const comentario = document.getElementById('comentario').value;
+
+      try {
+        // Llamar al endpoint /clasificar
+        const resp = await fetch('/clasificar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ comentario })
+        });
+        const data = await resp.json();
+
+        if (data.sentimiento) {
+          document.getElementById('resultado').innerText = 
+            'Sentimiento detectado: ' + data.sentimiento;
+        } else if (data.error) {
+          document.getElementById('resultado').innerText = 
+            'Error: ' + data.error;
+        }
+      } catch (err) {
+        document.getElementById('resultado').innerText = 
+          'Error en la comunicación con el servidor: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>
