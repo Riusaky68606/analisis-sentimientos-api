@@ -178,3 +178,4 @@ yarn-error.log*
 build/
 dist/
 public/static/
+front/
