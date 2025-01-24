@@ -1,40 +1,149 @@
-body {
+/* Estilo General */
+* {
+    box-sizing: border-box;
+  }
+  body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', 'Segoe UI Emoji', sans-serif;
     background-color: #f7f9fc;
+    color: #333333;
+    line-height: 1.6;
   }
   
-  .container {
-    width: 95%;
-    max-width: 500px;
-    margin: 50px auto;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
+  
+  /* Encabezado */
+  .main-header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 20px 0;
     text-align: center;
   }
+  .site-title {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  .site-subtitle {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
   
+  /* Contenedor principal */
+  .container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+  }
+  
+  /* Sección de Instrucciones */
+  .instructions {
+    margin-bottom: 25px;
+  }
+  .instructions h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #007bff;
+  }
+  .instructions p {
+    font-size: 1rem;
+    color: #555555;
+  }
+  
+  /* Sección de Análisis */
+  .analysis-section {
+    text-align: left;
+  }
+  .input-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
   textarea {
     width: 100%;
-    height: 100px;
+    height: 120px;
     margin-bottom: 20px;
+    padding: 12px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    transition: border-color 0.3s ease-in-out;
   }
-  
+  textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
   button {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 30px;
     cursor: pointer;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
   }
-  
   button:hover {
     background-color: #0056b3;
+  }
+  button:active {
+    background-color: #004494;
   }
   
   #resultado {
     margin-top: 20px;
     font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  /* Pie de Página */
+  .main-footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+  }
+  .main-footer p {
+    margin: 5px 0;
+  }
+  
+
+  /* Iconos emocionales */
+#resultado .icon {
+    font-size: 2rem;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Animación de fade-in */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Indicador de carga */
+  #loading {
+    display: none;
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
   }
   

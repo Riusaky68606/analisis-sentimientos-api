@@ -2,45 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Análisis de Sentimientos</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="container">
-    <h1>Análisis de Sentimientos</h1>
-    <textarea id="comentario" placeholder="Escribe un comentario..."></textarea>
-    <button id="analizar-btn">Analizar Sentimiento</button>
 
-    <div id="resultado"></div>
-  </div>
+  <!-- Encabezado -->
+  <header class="main-header">
+    <h1 class="site-title">Sistema de Análisis de Sentimientos</h1>
+    <p class="site-subtitle">Clasificación de reseñas de Google Maps (Positivo, Negativo o Neutral)</p>
+  </header>
 
-  <script>
-    document.getElementById('analizar-btn').addEventListener('click', async () => {
-      const comentario = document.getElementById('comentario').value;
+  <!-- Contenedor principal -->
+  <main class="container">
+    <!-- Sección de Instrucciones -->
+    <section class="instructions">
+      <h2>Instrucciones</h2>
+      <p>
+        Ingresa en el área de texto un comentario o reseña tal como se encontraría en Google Maps. 
+        Luego haz clic en el botón <strong>"Analizar Sentimiento"</strong>. 
+        El sistema procesará el texto y devolverá la categoría de sentimiento (positivo, negativo o neutral).
+      </p>
+    </section>
 
-      try {
-        // Llamar al endpoint /clasificar
-        const resp = await fetch('/clasificar', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ comentario })
-        });
-        const data = await resp.json();
+    <!-- Sección de entrada de texto y resultado -->
+    <section class="analysis-section">
+      <label for="comentario" class="input-label">Comentario a Analizar:</label>
+      <textarea id="comentario" placeholder="Escribe un comentario..." aria-label="Campo de texto para ingresar comentario"></textarea>
+      <button id="analizar-btn" aria-label="Botón para analizar el comentario">Analizar Sentimiento</button>
+      <div id="loading">Procesando el análisis...</div>
+      <div id="resultado" aria-live="polite"></div>
+    </section>
+  </main>
 
-        if (data.sentimiento) {
-          document.getElementById('resultado').innerText = 
-            'Sentimiento detectado: ' + data.sentimiento;
-        } else if (data.error) {
-          document.getElementById('resultado').innerText = 
-            'Error: ' + data.error;
-        }
-      } catch (err) {
-        document.getElementById('resultado').innerText = 
-          'Error en la comunicación con el servidor: ' + err;
-      }
-    });
-  </script>
+  <!-- Pie de página -->
+  <footer class="main-footer">
+    <p>Proyecto de Tesis - Análisis de Sentimientos en Reseñas de Google Maps</p>
+    <p>Autor: <strong>Milton David Casnanzuela Terán</strong></p>
+    <p>Facultad de Ingeniería de Sistemas, Carrera de Ingeniería en Computación</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
