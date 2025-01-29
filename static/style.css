@@ -147,3 +147,26 @@
     margin-top: 10px;
   }
   
+/* Estilo ajustado para el texto de la regla */
+.regla-texto {
+  font-size: 0.85rem; /* Tamaño más pequeño */
+  color: rgba(0, 0, 0, 0.5); /* Color más opaco */
+  margin-top: 8px;
+  line-height: 1.2; /* Espaciado más compacto */
+  text-align: justify; /* Alineación justificada para mejor lectura */
+}
+
+.regla-texto em {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6); /* Un poco más visible */
+}
+
+.regla-texto .positivo {
+  color: green;
+  font-weight: bold;
+}
+
+.regla-texto .negativo {
+  color: red;
+  font-weight: bold;
+}

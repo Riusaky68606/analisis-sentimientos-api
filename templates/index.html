@@ -11,7 +11,7 @@
   <!-- Encabezado -->
   <header class="main-header">
     <h1 class="site-title">Sistema de Análisis de Sentimientos</h1>
-    <p class="site-subtitle">Clasificación de reseñas de Google Maps (Positivo, Negativo o Neutral)</p>
+    <p class="site-subtitle">Clasificación de reseñas de Google Maps (Positivo, Negativo)</p>
   </header>
 
   <!-- Contenedor principal -->
@@ -22,7 +22,11 @@
       <p>
         Ingresa en el área de texto un comentario o reseña tal como se encontraría en Google Maps. 
         Luego haz clic en el botón <strong>"Analizar Sentimiento"</strong>. 
-        El sistema procesará el texto y devolverá la categoría de sentimiento (positivo, negativo o neutral).
+        El sistema procesará el texto y devolverá la categoría de sentimiento (positivo o negativo).
+      </p>
+      <p class="regla-texto">
+        <em>Regla de evaluación:</em> <span class="negativo">Menos de 4 estrellas</span> → se considera <span class="negativo">negativo</span>, 
+        mientras que <span class="positivo">4 estrellas o más</span> → se considera <span class="positivo">positivo</span>.
       </p>
     </section>
 

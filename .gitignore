@@ -179,3 +179,5 @@ build/
 dist/
 public/static/
 front/
+antiguos/
+optimized_random_forest_model.pkl
